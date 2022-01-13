@@ -14,11 +14,6 @@
             "HomePage": "http://localhost:3000/",
             "ReplyUrls": "http://localhost:3000/",
             "Audience": "AzureADMyOrg",
-            "ManualSteps": [
-                {
-                    "Comment": "Navigate to the Manifest page, find the 'replyUrlsWithType' section and change the type of redirect URI to 'Spa'"
-                }
-            ],
             "RequiredResourcesAccess": [
                 {
                   "Resource": "Microsoft Graph",
@@ -44,6 +39,14 @@
                 {
                     "key": "Enter_the_Tenant_Info_Here",
                     "value": "$tenantId"
+                },
+                {
+                    "key": "Enter_the_Redirect_Uri_Here",
+                    "value": "spa.Spa.RedirectUris"
+                },
+                {
+                    "key": "Enter_the_Post_Redirect_Uri_Here",
+                    "value": "spa.Spa.RedirectUris"
                 }
             ]
         }

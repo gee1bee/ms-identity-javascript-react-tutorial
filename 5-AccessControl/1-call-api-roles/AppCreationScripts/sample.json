@@ -33,7 +33,7 @@
       ]
     },
     {
-      "Id": "client",
+      "Id": "spa",
       "Name": "msal-react-spa",
       "Kind": "SinglePageApplication",
       "Audience": "AzureADMyOrg",
@@ -58,7 +58,6 @@
         }
       ],
       "ManualSteps": [
-        { "Comment":  "Navigate to the portal and set the 'replyUrlsWithType' to 'Spa' in the application manifest" },
         { "Comment": "To receive the 'roles' claim with the name of the app roles this user is assigned to, make sure that the user accounts you plan to sign-in to this app is assigned to the app roles of this SPA app. The guide, https://aka.ms/userassignmentrequired provides step by step instructions." },
         { "Comment": "Or you can run the ..\\CreateUsersAndAssignRoles.ps1 command to automatically create a number of users, and assign these users to the app roles of this app." }
       ]
@@ -82,13 +81,13 @@
     },
 
     {
-      "App": "client",
+      "App": "spa",
       "SettingKind": "Replace",
       "SettingFile": "\\..\\SPA\\src\\authConfig.js",
       "Mappings": [
         {
           "key": "Enter_the_Application_Id_Here",
-          "value": "client.AppId"
+          "value": ".AppId"
         },
         {
           "key": "Enter_the_Tenant_Info_Here",
@@ -97,6 +96,14 @@
         {
           "key": "Enter_the_Web_Api_Scope_here",
           "value": "service.Scope"
+        },
+        {
+          "key": "Enter_the_Redirect_Uri_Here",
+          "value": "spa.Spa.RedirectUris"
+        },
+        {
+          "key": "Enter_the_Post_Redirect_Uri_Here",
+          "value": "spa.Spa.RedirectUris"
         }
       ]
     }

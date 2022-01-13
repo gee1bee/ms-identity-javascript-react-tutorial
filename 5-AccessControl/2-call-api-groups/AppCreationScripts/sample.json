@@ -29,7 +29,7 @@
       ]      
     },
     {
-      "Id": "client",
+      "Id": "spa",
       "Name": "msal-react-spa",
       "Kind": "SinglePageApplication",
       "Audience": "AzureADMyOrg",
@@ -47,7 +47,6 @@
         }
       ],
       "ManualSteps": [
-        { "Comment":  "Navigate to the portal and set the 'replyUrlsWithType' to 'Spa' in the application manifest" },
         { "Comment": "This script has created a group named GroupAdmin for you. On Azure portal, assign some users to it, and configure your ID and Access token to emit GroupID in your app registration." },
         { "Comment": "This script has created a group named GroupMember for you. On Azure portal, assign some users to it, and configure your ID and Access token to emit GroupID in your app registration." }
       ]  
@@ -75,13 +74,13 @@
     },
 
     {
-      "App": "client",
+      "App": "spa",
       "SettingKind": "Replace",
       "SettingFile": "\\..\\SPA\\src\\authConfig.js",
       "Mappings": [
         {
           "key": "Enter_the_Application_Id_Here",
-          "value": "client.AppId"
+          "value": ".AppId"
         },
         {
           "key": "Enter_the_Tenant_Info_Here",
@@ -90,6 +89,14 @@
         {
           "key": "Enter_the_Web_Api_Scope_here",
           "value": "service.Scope"
+        },
+        {
+          "key": "Enter_the_Redirect_Uri_Here",
+          "value": "spa.Spa.RedirectUris"
+        },
+        {
+          "key": "Enter_the_Post_Redirect_Uri_Here",
+          "value": "spa.Spa.RedirectUris"
         }
       ]
     }

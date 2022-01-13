@@ -16,7 +16,7 @@
       "HomePage": "https://localhost:5000/api/todolist"
     },
     {
-      "Id": "client",
+      "Id": "spa",
       "Name": "msal-react-spa",
       "Kind": "SinglePageApplication",
       "Audience": "AzureADMyOrg",
@@ -28,11 +28,6 @@
           "DelegatedPermissions": [
             "access_as_user"
           ]
-        }
-      ],
-      "ManualSteps": [
-        {
-          "Comment": "Navigate to the Manifest page, find the 'replyUrlsWithType' section and change the type of redirect URI to 'Spa'"
         }
       ]
     }
@@ -54,7 +49,7 @@
       ]
     },
     {
-      "App": "client",
+      "App": "spa",
       "SettingKind": "Replace",
       "SettingFile": "\\..\\SPA\\src\\authConfig.js",
       "Mappings": [
@@ -69,6 +64,14 @@
         {
           "key": "Enter_the_Web_Api_Scope_here",
           "value": "service.Scope"
+        },
+        {
+          "key": "Enter_the_Redirect_Uri_Here",
+          "value": "spa.Spa.RedirectUris"
+        },
+        {
+          "key": "Enter_the_Post_Redirect_Uri_Here",
+          "value": "spa.Spa.RedirectUris"
         }
       ]
     }

@@ -39,9 +39,10 @@ class AuthContext {
         db.get('acrs').push(newAcrs).write();
     }
 
-    static deleteAuthContext(authContextId) {
+    static deleteAuthContext(authContextObject) {
+        const { authContextId,  operation } =  authContextObject;
         db.get('acrs')
-            .remove({ authContextId: authContextId })
+            .remove({ authContextId, operation })
             .write();
     }
 }

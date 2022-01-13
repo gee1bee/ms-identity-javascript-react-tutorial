@@ -27,7 +27,7 @@ export const ListView = (props) => {
         const updatedTask = tasks.find(task => id === task.id);
         updatedTask.completed = !updatedTask.completed;
 
-        editTask(id, updatedTask).then((response) => {
+        editTask(id, updatedTask).then((response) => { 
             const updatedTasks = tasks.map(task => {
                 if (id === task.id) {
                     return { ...task, completed: !task.completed }
@@ -46,8 +46,10 @@ export const ListView = (props) => {
             completed: false
         };
 
-        postTask(newTask).then(() => {
-            setTasks([...tasks, newTask]);
+        postTask(newTask).then((response) => {
+            if(response.message === "success"){
+                setTasks([...tasks, newTask]);
+            }
         })
     }
 
@@ -61,6 +63,7 @@ export const ListView = (props) => {
     }
 
     const handleEditTask = (id, newName) => {
+
         const updatedTask = tasks.find(task => id === task.id);
         updatedTask.name = newName;
 

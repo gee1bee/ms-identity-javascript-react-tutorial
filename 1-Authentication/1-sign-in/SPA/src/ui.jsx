@@ -7,7 +7,7 @@ import React from "react";
 
 import { AuthenticatedTemplate, UnauthenticatedTemplate, useMsal } from "@azure/msal-react";
 
-import { Navbar, Button, Dropdown, DropdownButton} from "react-bootstrap";
+import { Navbar, Dropdown, DropdownButton} from "react-bootstrap";
 
 import { loginRequest } from "./authConfig";
 
@@ -20,6 +20,13 @@ const NavigationBar = () => {
      */
     const { instance } = useMsal();
 
+    const handleLoginPopup = () => {
+         instance.loginPopup(loginRequest)
+            .catch(error => {
+            console.error(error);
+        });
+    }
+
     return (
         <>
             <AuthenticatedTemplate>
@@ -27,11 +34,10 @@ const NavigationBar = () => {
                     <Dropdown.Item as="button" onClick={() => instance.logoutPopup({postLogoutRedirectUri: "/", mainWindowRedirectUri: "/"})}>Sign out using Popup</Dropdown.Item>
                     <Dropdown.Item as="button" onClick={() => instance.logoutRedirect({postLogoutRedirectUri: "/"})}>Sign out using Redirect</Dropdown.Item>
                 </DropdownButton>
-                <Button variant="warning" onClick={() => instance.logout()} className="ml-auto">Sign Out</Button>
             </AuthenticatedTemplate>
             <UnauthenticatedTemplate>
                 <DropdownButton variant="secondary" className="ml-auto" drop="left" title="Sign In">
-                    <Dropdown.Item as="button" onClick={() => instance.loginPopup(loginRequest)}>Sign in using Popup</Dropdown.Item>
+                    <Dropdown.Item as="button" onClick={handleLoginPopup}>Sign in using Popup</Dropdown.Item>
                     <Dropdown.Item as="button" onClick={() => instance.loginRedirect(loginRequest)}>Sign in using Redirect</Dropdown.Item>
                 </DropdownButton>
             </UnauthenticatedTemplate>
